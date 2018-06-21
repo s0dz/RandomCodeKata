@@ -90,5 +90,59 @@ namespace ConsoleApp1
 
             return Regex.Replace(original, @"\s+", " ").Trim();
         }
+
+        public static string Tickets(int[] peopleInLine)
+        {
+            var cashRegister = new CashRegister();
+            foreach (var person in peopleInLine)
+            {
+                switch (person)
+                {
+                    case 25:
+                        cashRegister.TwentyFives++;
+                        // No change
+                        break;
+                    case 50:
+                        cashRegister.Fifties++;
+                        if (cashRegister.TwentyFives >= 1)
+                        {
+                            cashRegister.TwentyFives--;
+                        }
+                        else
+                        {
+                            return "NO";
+                        }
+
+                        break;
+                    case 100:
+                        cashRegister.Hundreds++;
+                        if (cashRegister.Fifties >= 1 && cashRegister.TwentyFives >= 1)
+                        {
+                            cashRegister.Fifties--;
+                            cashRegister.TwentyFives--;
+                        }
+                        else if(cashRegister.TwentyFives >= 3)
+                        {
+                            cashRegister.TwentyFives--;
+                            cashRegister.TwentyFives--;
+                            cashRegister.TwentyFives--;
+                        }
+                        else
+                        {
+                            return "NO";
+                        }
+                        break;
+                }
+            }
+
+            return "YES";
+        }
+
+        public class CashRegister
+        {
+            public int TwentyFives { get; set; }
+            public int Fifties { get; set; }
+            public int Hundreds { get; set; }
+        }
     }
 }
