@@ -69,5 +69,13 @@ namespace ConsoleApp1
             int[] peopleInLine = new int[] { 25, 100 };
             Assert.AreEqual("NO", Kata.Tickets(peopleInLine));
         }
+
+        [Test]
+        public void TwoSumTest()
+        {
+            var nums = new[] {3, 2, 4};
+            var expected = new[] {1, 2};
+            Assert.AreEqual(expected, Kata.TwoSum(nums, 6));
+        }
     }
 }

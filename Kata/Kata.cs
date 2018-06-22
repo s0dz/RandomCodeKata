@@ -144,5 +144,20 @@ namespace ConsoleApp1
             public int Fifties { get; set; }
             public int Hundreds { get; set; }
         }
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            for (var k = 0; k < nums.Length; k++)
+            {
+                for (var j = 0; j < nums.Length; j++)
+                {
+                    if (nums[j] + nums[k] == target && j != k)
+                    {
+                        return new int[] { j, k };
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
