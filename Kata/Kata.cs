@@ -145,6 +145,10 @@ namespace ConsoleApp1
             public int Hundreds { get; set; }
         }
 
+
+        // Time complexity : O(n^2)
+        //      Looping through each array is O(n)
+        // Space complexity : O(1)
         public static int[] TwoSum(int[] nums, int target)
         {
             for (var k = 0; k < nums.Length; k++)
@@ -153,11 +157,13 @@ namespace ConsoleApp1
                 {
                     if (nums[j] + nums[k] == target && j != k)
                     {
-                        return new int[] { j, k };
+                        return new int[] { k, j };
                     }
                 }
             }
             return null;
         }
+
+
     }
 }
